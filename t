@@ -1,3 +1,6 @@
-reg add HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU /v UseWUServer /t REG_DWORD /d 0 /f
-Restart-Service wuauserv
-Add-WindowsCapability -Online -Name Rsat.ActiveDirectory.DS-LDS.Tools~~~~0.0.1.0
+Get-DomainUser -LDAPFilter '(userAccountControl:1.2.840.113556.1.4.803:=65536)' | Select-Object samaccountname, passwordlastset, useraccountcontrol
+
+
+([adsisearcher]"(&(objectCategory=person)(objectClass=user)(userAccountControl:1.2.840.113556.1.4.803:=65536))").FindAll() | ForEach-Object {
+    $_.Properties['samaccountname']
+}
