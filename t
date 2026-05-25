@@ -1,2 +1,5 @@
-# Download PowerView directly
-iex (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/master/Recon/PowerView.ps1')
+Add-WindowsCapability -Online 
+    http://Rsat.GroupPolicy.Management.Tools~~~~0.0.1.0
+    
+http://Rsat.ActiveDirectory.DS-LDS.Tools~~~~0.0.1.0
+    http://Rsat.Dns.Tools~~~~0.0.1.0
